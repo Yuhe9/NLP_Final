@@ -40,11 +40,15 @@ train_text_list = train["Text"].values.tolist()
 train_list.append(train_text_list)
 test_text_list = test["Text"].values.tolist()
 test_list.append(test_text_list)
-train_list = list(map(lambda x, y: [x,y], train_summary_list, train_text_list))
+train_list = list(map(lambda x, y: x+y, train_summary_list, train_text_list))
+test_list = list(map(lambda x, y: x+y, test_summary_list, test_text_list))
 
-train_list = np.array(train_list, np.string_)
+
+train_list = np.array(train_list)
 print(type(train_list))
-test_list = np.array(test_list, np.string_)
+print(train_list)
+test_list = np.array(test_list)
+#test_list = np.array(test_list, np.string_)
 
 # create the transform
 vectorizer = CountVectorizer(stop_words = 'english')
